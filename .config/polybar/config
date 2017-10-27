@@ -1,0 +1,159 @@
+[colors]
+background = #1D1F21
+background-alt = #8C9440
+foreground = #232323
+foreground-alt = #555
+primary = #ffb52a
+secondary = #e60053
+alert = #bd2c40
+dark-font = #232323
+bright-font = #C1C1C1
+active-wp = #8C9440
+unactive-wp = #B5BD68
+before-w-title = #484848
+w-title = #1D1F21
+
+[bar/main]
+monitor = ${env:MONITOR:HDMI-0}
+width = 100%
+height = 17
+fixed-center = true
+
+background = #1D1F21
+foreground = #232323
+
+; -------------- PADDING/MARGIN --------------;
+padding-left = 0
+padding-right = 0
+module-margin-left = 0
+module-margin-right = 0
+; -------------- PADDING/MARGIN --------------;
+
+
+; -------------- FONTS --------------;
+font-0 = fixed:pixelsize=9;2
+font-1 = FontAwesome:size=11;3
+font-2 = Monaco for Powerline:size=10;2
+; -------------- FONTS --------------;
+
+
+; -------------- MODULES LAYOUT --------------;
+modules-left = homeIcon i3 bspwm beforeTitle beforeTitle2 xwindow
+modules-center = 
+modules-right = volume beforeDate cdate beforeTime time
+; -------------- MODULES LAYOUT --------------;
+
+
+; -/-/-/-/-/-/-/-/-/-/-/-/-/- M O D U L E S -/-/-/-/-/-/-/-/-/-/-/-/-/-;
+; Window Title
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:60:...%
+label-foreground = #C1C1C1
+label-background = #1D1F21
+label-padding-left = 15
+
+
+; Workspace Switcher
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+; focused = Active workspace on focused monitor
+label-focused = %name%
+label-focused-background = #8C9440
+label-focused-padding = 2
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %index%
+label-unfocused-background = #B5BD68
+label-unfocused-padding = 2
+; visible = Active workspace on unfocused monitor
+label-visible = %index%
+label-visible-background = #B5BD68
+label-visible-padding = 2
+; urgent = Workspace with urgency hint set
+label-urgent = %name%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+
+; Time
+[module/time]
+type = internal/date
+interval = 1
+time = "%H:%M"
+time-alt = "%H:%M:%S"
+format-background = #B5BD68
+format-padding = 2
+label = %time%
+
+
+; Date
+[module/cdate]
+type = custom/script
+exec = date '+ %Y/%m/%d'
+format-foreground = #C1C1C1
+format-background = #282A2E
+format-padding = 2
+interval = 60
+
+
+; Volume
+[module/volume]
+type = internal/volume
+
+format-volume = <ramp-volume> <label-volume>
+format-volume-foreground = #C1C1C1
+format-volume-background = #454A4F
+format-volume-padding = 2
+ramp-volume-0 = 
+ramp-volume-1 = 🔉
+ramp-volume-2 = 
+
+format-muted-prefix = " "
+format-muted-foreground = #F00
+format-muted-background = #454A4F
+format-muted-padding = 2
+
+;master-mixer = Master
+mapped = true
+
+
+
+
+; -------------- SPACERS/LEFT --------------;
+[module/homeIcon]
+type = custom/text
+content = ""
+content-foreground = #232323
+content-background = #B5BD68
+content-padding = 1
+
+[module/beforeTitle]
+type = custom/text
+content = "    "
+content-foreground = #B5BD68
+content-background = #484848
+
+[module/beforeTitle2]
+type = custom/text
+content = ""
+content-foreground = #484848
+content-background = #1D1F21
+
+
+; -------------- SPACERS/RIGHT --------------;
+[module/beforeTime]
+type = custom/text
+content = ""
+content-foreground = #B5BD68
+content-background = #282A2E
+
+[module/beforeDate]
+type = custom/text
+content = ""
+content-foreground = #282A2E
+content-background = #454A4F
+
+; -/-/-/-/-/-/-/-/-/-/-/-/-/- M O D U L E S -/-/-/-/-/-/-/-/-/-/-/-/-/-;#454A4F
